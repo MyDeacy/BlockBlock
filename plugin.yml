@@ -1,0 +1,9 @@
+name: BlockBlock
+main: blockblock\Main
+version: 0.0.1
+api: [2.0.0]
+load: POSTWORLD
+author: gigantessbeta
+commands:
+ bb:
+  description: BlockBlock
