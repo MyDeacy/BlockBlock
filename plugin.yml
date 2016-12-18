@@ -1,6 +1,6 @@
 name: BlockBlock
 main: blockblock\Main
-version: 0.0.1
+version: 0.0.2
 api: [2.0.0]
 load: POSTWORLD
 author: gigantessbeta
