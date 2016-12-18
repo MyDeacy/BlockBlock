@@ -17,6 +17,9 @@ class Main extends PluginBase implements Listener {
 
 	public function onEnable() {   
         $this->getServer()->getPluginManager()->registerEvents($this,$this);
+	$this->getLogger()->info("§6BlockBlockプラグインをご利用いただき、ありがとうございます。");
+	$this->getLogger()->info("§6不具合などが生じた際は、連絡をお願いします。");
+	$this->getLogger()->info("§c[License] 二次配布、改造配布は禁止です。 §b製作者gigantessbeta");		
 	if(!file_exists($this->getDataFolder())){
 	mkdir($this->getDataFolder(), 0744, true);
 }
