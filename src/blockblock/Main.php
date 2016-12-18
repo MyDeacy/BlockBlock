@@ -35,20 +35,36 @@ public function onCommand(CommandSender $sender, Command $command, $label, array
 
 			if($args[0] = "set"){
 			if(!isset($args[1]))
-				$sender->sendMessage("[§cBB§f]§6ブロックIDを指定してください。");
+				$sender->sendMessage("[§cBB§f]§6 ブロックIDを指定してください。");
 				return false;	
 					if($this->config->exists("$args[1]")){
-						$sender->sendMessage("[§cBB§f]§6既に登録されています。");
+						$sender->sendMessage("[§cBB§f]§6 既に登録されています。");
 			}else{
 				$sender->sendMessage("[§cBB§f]§6ID ".$args[1]." を壊せなくしました。");
 					$this->data->set("$args[1]", "true");
 					$this->data->save();
 					$this->data->getAll();
 			}
-		}
-
-		
-}
+		}elseif($args[0] = "unset"){
+			if(!isset($args[1]))
+				$sender->sendMessage("[§cBB§f]§6 ブロックIDを指定してください。");
+				return false;	
+					if($this->config->exists("$args[1]")){
+						$sender->sendMessage("[§cBB§f]§6 ID ".$args[1]." の破壊制限を解除しました。");
+						$this->config->remove("$args[1]");
+						$this->config->save();
+			}else{
+				$sender->sendMessage("[§cBB§f]§6 このブロックは制限を掛けられていません。");
+			}
+			}else{
+				$sender->sendMessage("§b========== 使用方法 ==========");
+				$sender->sendMessage("/bb set <ブロックのid> 壊せないブロックを設定できます。");
+				$sender->sendMessage("/bb unset <ブロックのID> 壊せないブロックを解除します。");
+				$sender->sendMessage("§6※ブロックは何個でも指定できます。");
+			}
+			}else{
+}				$sender->sendMessage("§cあなたはOPではありません。。");
+	}
 
 
 }
