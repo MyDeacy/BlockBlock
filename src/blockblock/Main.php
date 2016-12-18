@@ -11,6 +11,7 @@ use pocketmine\utils\Config;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\CommandExecutor;
+use pocketmine\event\entity\EntityExplodeEvent;
 
 
 class Main extends PluginBase implements Listener {
@@ -89,4 +90,9 @@ return false;
 			$event->setCancelled();
 }
 }
+	
+public function onExplode(EntityExplodeEvent $explode){
+	$explode->setCancelled();
+                                        
+                }
 }
