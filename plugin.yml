@@ -6,4 +6,4 @@ load: POSTWORLD
 author: gigantessbeta
 commands:
  bb:
-  description: BlockBlock
+  description: BB main command.
