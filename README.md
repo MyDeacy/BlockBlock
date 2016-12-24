@@ -7,4 +7,5 @@
 ***
 ## To do list
 ・It will correspond to various languages.<br>
-・We will apply other minor fixes and changes.
+・We will apply other minor fixes and changes.<br>
+・Create image image.
