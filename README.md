@@ -1,5 +1,5 @@
 # BlockBlock
-ou can set a block that can not be broken by a command.
+You can set a block that can not be broken by a command.
 
 ##Command
 /bb set (id) Set so that blocks specified with ID can not be broken.<br>
