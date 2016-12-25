@@ -1,5 +1,5 @@
 # BlockBlock
-![1](http://gigantessbeta.esy.es/block/image/BlockBlock.png)
+![1](http://gigantessbeta.esy.es/bb/image/BlockBlock.png)
 ***
 You can set a block that can not be broken by a command.
 
