@@ -1,4 +1,4 @@
-# BlockBlock
+# BlockBlock ![4](https://poggit.pmmp.io/ci.badge/PMpluginMaker-Team/BlockBlock/BlockBlock)
 ![1](http://gigantessbeta.esy.es/bb/image/BlockBlock.png)
 ***
 You can set a block that can not be broken by a command.
