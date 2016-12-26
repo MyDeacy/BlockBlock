@@ -1,0 +1,11 @@
+{
+  "start": "\n§bСпасибо за использывани BlockBlock plugin\nPlease contact us when troubles occur.\n§cSecondary distribution, Modification Distribution is prohibited. §6 Author: PMpluginMaker-Team",
+  "main": "§e§b======== §aКак использывать? §e========\n§f/bb set <BlockID> Установить запрещённый блок.\n/bb unset <BlockID> разблокировать блок.\n§6※Blocks can be specified indefinitely.",
+  "id_error": "[§cBB§f]§6 Пожалуйста укажите ID блока",
+  "set_error": "[§cBB§f]§6 Этот блок уже зарегистрирован.",
+  "set_true": "[§cBB§f]§6 Установленана блокировка на ID : {$args[1]} ",
+  "unset_error": "[§cBB§f]§6 Этот блок не зарегистрирован.",
+  "unset_true": "[§cBB§f]§6 ID {$args[1]} удаден.",
+  "dont_permission": "§cУ вас нет прав оператора"
+
+}
