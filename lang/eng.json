@@ -3,9 +3,9 @@
   "main": "§b======== How to use ========\n§f/bb set <BlockID> Set a block that can not be break.\n/bb unset <BlockID> Unblock the block.\n§6※Blocks can be specified indefinitely.",
   "id_error": "[§cBB§f]§6 Please specify block ID.",
   "set_error": "[§cBB§f]§6 It has already been registered.",
-  "set_true": "[§cBB§f]§6 made settings so as not to break ID: ".$args[1].".",
+  "set_true": "[§cBB§f]§6 made settings so as not to break ID: {$args[1]} ",
   "unset_error": "[§cBB§f]§6 This block is not blocked.",
-  "unset_true": "[§cBB§f]§6 ID ".$args[1]." restriction has been lifted.",
+  "unset_true": "[§cBB§f]§6 ID {$args[1]} restriction has been lifted.",
   "dont_permission": "§cYou are not an operator."
 
 }
