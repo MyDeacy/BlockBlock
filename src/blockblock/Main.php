@@ -1,4 +1,4 @@
-<?php
+Gf<?php
 namespace blockblock;
 
 
@@ -18,9 +18,9 @@ class Main extends PluginBase implements Listener {
 
 	public function onEnable() {   
         $this->getServer()->getPluginManager()->registerEvents($this,$this);
-	$this->getLogger()->info("§6BlockBlockプラグインをご利用いただき、ありがとうございます。");
-	$this->getLogger()->info("§6不具合などが生じた際は、連絡をお願いします。");
-	$this->getLogger()->info("§c[License] 二次配布、改造配布は禁止です。 §b製作者gigantessbeta");		
+        $this->saveDefaultConfig();
+		$this->reloadConfig();
+	$this->getLogger()->info($this->lang("start"));
 	if(!file_exists($this->getDataFolder())){
 	mkdir($this->getDataFolder(), 0744, true);
 }
@@ -33,46 +33,41 @@ public function onCommand(CommandSender $sender, Command $command, $label, array
 		case "bb":
 			if($sender->isOp()){
 		if(!isset($args[0])){
-			$sender->sendMessage("§b========== 使用方法 ==========");
-			$sender->sendMessage("/bb set <ブロックのid> 壊せないブロックを設定できます。");
-			$sender->sendMessage("/bb unset <ブロックのID> 壊せないブロックを解除します。");
-			$sender->sendMessage("§6※ブロックは何個でも指定できます。");
+			$sender->sendMessage($this->lang("main"));
 return false;
 }
 
-			if("$args[0]" == "set"){
+			if($args[0] == "set"){
 			if(!isset($args[1])){
-				$sender->sendMessage("[§cBB§f]§6 ブロックIDを指定してください。");
+				$sender->sendMessage($this->lang("id_error"));
 return false;
 }	
 					if($this->data->exists($args[1])){
-						$sender->sendMessage("[§cBB§f]§6 既に登録されています。");
+						$sender->sendMessage($this->lang("set_error"));
 			}else{
-				$sender->sendMessage("[§cBB§f]§6ID ".$args[1]." を壊せなくしました。");
-					$this->data->set("$args[1]", "true");
+				
+				$sender->sendMessage($this->lang("set_true"));
+					$this->data->set($args[1], "true");
 					$this->data->save();
 					$this->data->getAll();
 			}
-		}elseif("$args[0]" == "unset"){
+		}elseif($args[0] == "unset"){
 			if(!isset($args[1])){
-				$sender->sendMessage("[§cBB§f]§6 ブロックIDを指定してください。");
+				$sender->sendMessage($this->lang("unset_error"));
 return false;
 }	
-					if($this->data->exists("$args[1]")){
-						$sender->sendMessage("[§cBB§f]§6 ID ".$args[1]." の破壊制限を解除しました。");
-						$this->data->remove("$args[1]");
+					if($this->data->exists($args[1])){
+						$sender->sendMessage($this->lang("unset_true"));
+						$this->data->remove($args[1]);
 						$this->data->save();
 			}else{
-				$sender->sendMessage("[§cBB§f]§6 このブロックは制限を掛けられていません。");
+				$sender->sendMessage($this->lang("unset_error"));
 			}
 			}else{
-				$sender->sendMessage("§b========== 使用方法 ==========");
-				$sender->sendMessage("/bb set <ブロックのid> 壊せないブロックを設定できます。");
-				$sender->sendMessage("/bb unset <ブロックのID> 壊せないブロックを解除します。");
-				$sender->sendMessage("§6※ブロックは何個でも指定できます。");
+				$sender->sendMessage($this->lang("main"));
 			}
 			}else{
-			$sender->sendMessage("§cあなたはOPではありません。");
+			$sender->sendMessage($this->lang("dont_permission"));
 				return false;
 }
 
@@ -95,4 +90,20 @@ public function onExplode(EntityExplodeEvent $explode){
 	$explode->setCancelled();
                                         
                 }
+ public function lang($phrase){
+		$lang = $this->getConfig()->get("Use_language");
+        $urlh = $this->curl_get_contents("https://raw.githubusercontent.com/PMpluginMaker-Team/BlockBlock/master/lang/{$lang}.json"); 
+        $url = json_decode($urlh, true); 
+        return $url["{$phrase}"];
+		}
+public function curl_get_contents($url){
+  $curl = curl_init($url);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
+  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+  curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+  $data = curl_exec($curl);
+  curl_close($curl);
+  return $data;
+}               
 }
